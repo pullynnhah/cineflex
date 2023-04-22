@@ -10,11 +10,10 @@ import Seat from "../components/Seat";
 import { getSeats } from "../services/api";
 import { Title } from "../styles/Title";
 
-export default function SeatsPage({ buyers, setBuyers }) {
+export default function SeatsPage({ buyers, setBuyers, movieInfo, setMovieInfo }) {
   const { idSession } = useParams();
 
   const [seats, setSeats] = useState([]);
-  const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,18 +21,20 @@ export default function SeatsPage({ buyers, setBuyers }) {
       .then(res => {
         const { seats, name: time, day, movie } = res.data;
         setSeats(seats);
-        setMovie({
+
+        setMovieInfo({
           title: movie.title,
           posterURL: movie.posterURL,
-          date: `${day.weekday} - ${time}`
+          date: { footer: `${day.weekday} - ${time}`, success: `${day.date} ${time}` }
         });
+
         setLoading(false);
       })
       .catch(err => {
         console.error(err.response.data);
         setLoading(false);
       });
-  }, [idSession]);
+  }, [idSession, setMovieInfo]);
 
   return loading ? (
     <Loader />
@@ -49,7 +50,11 @@ export default function SeatsPage({ buyers, setBuyers }) {
         <Legend />
         <BuyersForm buyers={buyers} setBuyers={setBuyers} />
       </Page>
-      <Footer {...movie} />
+      <Footer
+        title={movieInfo.title}
+        posterURL={movieInfo.posterURL}
+        date={movieInfo.date.footer}
+      />
     </>
   );
 }

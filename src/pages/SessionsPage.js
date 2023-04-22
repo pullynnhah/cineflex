@@ -8,18 +8,20 @@ import Session from "../components/Session";
 import { getShowtimes } from "../services/api";
 import { Title } from "../styles/Title";
 
-export default function SessionsPage() {
+export default function SessionsPage({ movieInfo, setMovieInfo }) {
   const { idMovie } = useParams();
 
   const [sessions, setSessions] = useState([]);
-  const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getShowtimes(idMovie)
       .then(res => {
         const { days, title, posterURL } = res.data;
         setSessions(days);
-        setMovie({ title, posterURL });
+        setMovieInfo({
+          title,
+          posterURL
+        });
         setLoading(false);
       })
       .catch(err => {
@@ -40,7 +42,7 @@ export default function SessionsPage() {
           ))}
         </ul>
       </Page>
-      <Footer {...movie} />
+      <Footer {...movieInfo} />
     </>
   );
 }

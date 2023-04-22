@@ -1,3 +1,17 @@
+import styled from "styled-components";
+
 export default function SuccessPage({ buyers }) {
-  return <h2>SuccessPage</h2>;
+  return (
+    <Page>
+      <h2>
+        Pedido feito
+        <br />
+        com sucesso!
+      </h2>
+    </Page>
+  );
 }
+
+const Page = styled.div`
+  margin: 27px 0;
+`;
