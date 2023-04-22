@@ -3,8 +3,19 @@ import styled from "styled-components";
 
 import { COLORS } from "../constants/colors";
 
-export default function Seat({ id, name, isAvailable }) {
+export default function Seat({ id, name, isAvailable, buyers, setBuyers }) {
   const [isSelected, setIsSelected] = useState(false);
+
+  function addBuyer(idSeat, nameSeat) {
+    const newBuyers = [...buyers, { idSeat, nameSeat, name: "", cpf: "" }];
+    newBuyers.sort((a, b) => a.idSeat - b.idSeat);
+    console.log(newBuyers);
+    setBuyers(newBuyers);
+  }
+
+  function removeBuyer(idSeat) {
+    setBuyers(buyers.filter(b => b.idSeat !== idSeat));
+  }
 
   let color;
   if (isSelected) color = "cyan";
@@ -16,8 +27,12 @@ export default function Seat({ id, name, isAvailable }) {
       if (isSelected) {
         if (window.confirm(`Deseja remover assento "${name}"?`)) {
           setIsSelected(false);
+          removeBuyer(id);
         }
-      } else setIsSelected(true);
+      } else {
+        setIsSelected(true);
+        addBuyer(id, name);
+      }
     } else {
       window.alert(`O assento "${name}" não está disponível!`);
     }

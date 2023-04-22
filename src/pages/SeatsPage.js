@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
+import BuyersForm from "../components/BuyersForm";
 import Footer from "../components/Footer";
 import Legend from "../components/Legend";
 import Loader from "../components/Loader";
@@ -9,7 +10,7 @@ import Seat from "../components/Seat";
 import { getSeats } from "../services/api";
 import { Title } from "../styles/Title";
 
-export default function SeatsPage() {
+export default function SeatsPage({ buyers, setBuyers }) {
   const { idSession } = useParams();
 
   const [seats, setSeats] = useState([]);
@@ -42,9 +43,10 @@ export default function SeatsPage() {
         <Title>Selecione o filme</Title>
         <ul>
           {seats.map(s => (
-            <Seat key={s.id} {...s} />
+            <Seat key={s.id} {...s} buyers={buyers} setBuyers={setBuyers} />
           ))}
         </ul>
+        <BuyersForm buyers={buyers} setBuyers={setBuyers} />
         <Legend />
       </Page>
       <Footer {...movie} />
