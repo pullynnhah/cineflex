@@ -3,14 +3,18 @@ import styled from "styled-components";
 
 import arrow from "../assets/arrow.svg";
 
-export default function Banner() {
+export default function Banner({ setBuyers }) {
   const location = useLocation();
   const navigate = useNavigate();
+
+  function goBack() {
+    setBuyers([]);
+    navigate(-1);
+  }
+
   return (
     <Header>
-      {location.pathname !== "/" && (
-        <img src={arrow} alt="back arrow" onClick={() => navigate(-1)} />
-      )}
+      {location.pathname !== "/" && <img src={arrow} alt="back arrow" onClick={goBack} />}
       <Link to="/">
         <h1>Cineflex</h1>
       </Link>

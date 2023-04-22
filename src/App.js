@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Banner />
+      <Banner setBuyers={setBuyers} />
       <Routes>
         <Route path="/" element={<MoviesPage />} />
         <Route path="/sessions/:idMovie" element={<SessionsPage />} />

@@ -17,10 +17,7 @@ export default function BuyersForm({ buyers, setBuyers }) {
     const ids = buyers.map(b => b.idSeat);
     const customers = buyers.map(b => ({ idAssento: b.idSeat, nome: b.name, cpf: b.cpf }));
     postPurchase({ ids, compradores: customers })
-      .then(res => {
-        console.log(res.data);
-        navigate(`/success`);
-      })
+      .then(res => navigate(`/success`))
       .catch(err => console.error(err.response.data));
   }
 
