@@ -31,7 +31,10 @@ export default function App() {
             />
           }
         />
-        <Route path="/success" element={<SuccessPage buyers={buyers} movieInfo={movieInfo} />} />
+        <Route
+          path="/success"
+          element={<SuccessPage buyers={buyers} setBuyers={setBuyers} movieInfo={movieInfo} />}
+        />
       </Routes>
     </BrowserRouter>
   );
