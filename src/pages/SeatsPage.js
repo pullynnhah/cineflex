@@ -46,8 +46,8 @@ export default function SeatsPage({ buyers, setBuyers }) {
             <Seat key={s.id} {...s} buyers={buyers} setBuyers={setBuyers} />
           ))}
         </ul>
-        <BuyersForm buyers={buyers} setBuyers={setBuyers} />
         <Legend />
+        <BuyersForm buyers={buyers} setBuyers={setBuyers} />
       </Page>
       <Footer {...movie} />
     </>

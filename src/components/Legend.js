@@ -29,6 +29,13 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    p {
+      color: #4e5a65;
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: -0.013em;
+    }
   }
 `;
 

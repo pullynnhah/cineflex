@@ -9,7 +9,6 @@ export default function Seat({ id, name, isAvailable, buyers, setBuyers }) {
   function addBuyer(idSeat, nameSeat) {
     const newBuyers = [...buyers, { idSeat, nameSeat, name: "", cpf: "" }];
     newBuyers.sort((a, b) => a.idSeat - b.idSeat);
-    console.log(newBuyers);
     setBuyers(newBuyers);
   }
 
