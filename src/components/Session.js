@@ -7,7 +7,7 @@ export default function Session({ weekday, date, showtimes }) {
   const navigate = useNavigate();
 
   function gotoSession(id) {
-    navigate(`/seats/${s.id}`);
+    navigate(`/seats/${id}`);
   }
 
   return (
