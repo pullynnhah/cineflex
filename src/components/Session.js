@@ -5,6 +5,11 @@ import { OrangeButton } from "../styles/OrangeButton";
 
 export default function Session({ weekday, date, showtimes }) {
   const navigate = useNavigate();
+
+  function gotoSession(id) {
+    navigate(`/seats/${s.id}`);
+  }
+
   return (
     <Container>
       <p>
@@ -13,7 +18,7 @@ export default function Session({ weekday, date, showtimes }) {
       <ul>
         {showtimes.map(s => (
           <li key={s.id}>
-            <OrangeButton onClick={() => navigate(`/seats/${s.id}`)}>{s.name}</OrangeButton>
+            <OrangeButton onClick={() => gotoSession(s.id)}>{s.name}</OrangeButton>
           </li>
         ))}
       </ul>
