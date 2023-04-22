@@ -16,4 +16,7 @@ export default function BuyersForm({ buyers, setBuyers }) {
   );
 }
 
-const Form = styled.form``;
+const Form = styled.form`
+  width: 84vw;
+  margin: 42px auto 120px;
+`;
