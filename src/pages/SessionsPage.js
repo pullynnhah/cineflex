@@ -28,7 +28,7 @@ export default function SessionsPage({ movieInfo, setMovieInfo }) {
         console.error(err.response.data);
         setLoading(false);
       });
-  }, [idMovie]);
+  }, [idMovie, setMovieInfo]);
 
   return loading ? (
     <Loader />
