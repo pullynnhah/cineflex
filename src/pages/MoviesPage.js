@@ -42,5 +42,6 @@ const Page = styled.div`
     justify-content: space-evenly;
     align-items: center;
     gap: 11px 0;
+    margin-top: 41px;
   }
 `;
