@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Loader from "../components/Loader";
-import MovieCard from "../components/MovieCard";
-import { getMovies } from "../services/api";
+import Session from "../components/Session";
+import { getShowtimes } from "../services/api";
 import { Title } from "../styles/Title";
 
-export default function MoviesPage() {
-  const [movies, setMovies] = useState([]);
+export default function SessionsPage() {
+  const { idMovie } = useParams();
+
+  const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getMovies()
+    getShowtimes(idMovie)
       .then(res => {
-        setMovies(res.data);
+        setSessions(res.data.days);
         setLoading(false);
       })
       .catch(err => {
         console.error(err.response.data);
         setLoading(false);
       });
-  }, []);
+  }, [idMovie]);
 
   return loading ? (
     <Loader />
@@ -27,8 +30,8 @@ export default function MoviesPage() {
     <Page>
       <Title>Selecione o filme</Title>
       <ul>
-        {movies.map(m => (
-          <MovieCard key={m.id} id={m.id} title={m.title} posterURL={m.posterURL} />
+        {sessions.map(s => (
+          <Session key={s.id} {...s} />
         ))}
       </ul>
     </Page>
@@ -36,11 +39,5 @@ export default function MoviesPage() {
 }
 
 const Page = styled.div`
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 11px 0;
-  }
+  margin: 41px 8vw 130px;
 `;

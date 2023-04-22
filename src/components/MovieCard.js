@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function MovieCard({ id, title, posterURL }) {
   return (
-    <Link to={`/showtimes/${id}`}>
+    <Link to={`/sessions/${id}`}>
       <Card>
         <img src={posterURL} alt={title} />
       </Card>
