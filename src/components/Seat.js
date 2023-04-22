@@ -7,7 +7,7 @@ export default function Seat({ id, name, isAvailable }) {
   const [isSelected, setIsSelected] = useState(false);
 
   let color;
-  if (isSelected) color = "green";
+  if (isSelected) color = "cyan";
   else if (isAvailable) color = "grey";
   else color = "yellow";
 

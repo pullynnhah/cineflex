@@ -3,20 +3,19 @@ import styled from "styled-components";
 import { COLORS } from "../constants/colors";
 
 export default function Legend() {
+  const keys = [
+    { color: "cyan", text: "Selecionado" },
+    { color: "grey", text: "Disponível" },
+    { color: "yellow", text: "Indisponível" }
+  ];
   return (
     <Container>
-      <div>
-        <Bullet {...COLORS.green}></Bullet>
-        <p>Selecionado</p>
-      </div>
-      <div>
-        <Bullet {...COLORS.grey}></Bullet>
-        <p>Disponível</p>
-      </div>
-      <div>
-        <Bullet {...COLORS.yellow}></Bullet>
-        <p>Indisponível</p>
-      </div>
+      {keys.map(k => (
+        <div key={k.color}>
+          <Bullet {...COLORS[k.color]}></Bullet>
+          <p>{k.text}</p>
+        </div>
+      ))}
     </Container>
   );
 }
