@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Footer from "../components/Footer";
+import Legend from "../components/Legend";
 import Loader from "../components/Loader";
 import Seat from "../components/Seat";
 import { getSeats } from "../services/api";
@@ -44,6 +45,7 @@ export default function SeatsPage() {
             <Seat key={s.id} {...s} />
           ))}
         </ul>
+        <Legend />
       </Page>
       <Footer {...movie} />
     </>

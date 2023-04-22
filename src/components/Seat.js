@@ -47,5 +47,5 @@ const Container = styled.div`
   text-align: center;
   letter-spacing: 0.04em;
 
-  color: #000000;
+  color: #000;
 `;
